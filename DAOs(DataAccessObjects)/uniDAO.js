@@ -6,7 +6,21 @@ class uniDAO {
     }
 
    async  create(req){
+    var query = "insert into university ('_uni_name_', '_location_', '_longitude_', '_latitude_') values (?,?,?,?);"
+    var data = Object.values(req.body)
+    try{
+        var result = await db.run(query,data)
+        return{
+            "status" : "true", 
 
+        }
+    }
+    catch(err){
+        console.error(err) // Only during developement
+        return {
+            "status" : "false"
+        }
+    }
     }
    async retrive(req){
 
