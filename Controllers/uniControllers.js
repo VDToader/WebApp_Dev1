@@ -7,7 +7,8 @@ class UniController{
     async uniController_create (req)
     {
         if(Object.values(req.body).length === 4){
-            this.unidao.create(req)
+            var result = await this.unidao.create(req)
+            return result
         }
     }
 }

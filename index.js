@@ -3,23 +3,11 @@ const app = express()
 const PORT_NUMBER = 5000
 const db = require("./sql/sqlconn")
 const bodyparser = require('body-parser')
+const UniController = require('./Controllers/uniControllers')
 
 app.use(express.urlencoded({extended : true })) // Required to post 
 app.use(express.json())
 
-// JSON object creation
-let data = [
-    {
-        "fn" : "Vlad",
-        "sn" : "Toader",
-        "address" : "10 Wellacre Road"
-    },
-    {
-        "fn" : "Irina",
-        "sn" : "Buburuz",
-        "address" : "10 Wellacre Road"
-    },
-]
 
 
 // Routes creation
@@ -28,8 +16,8 @@ app.get('/', (req, res) => {
 })
 
 app.post('/registerdata', (req, res) => {
-    console.log(Object.values(req.body));
-    res.status(200).send('Data received');
+    this.UniController = new UniController()
+    this.UniController.uniController_create(req)
 });
 
 
