@@ -1,47 +1,48 @@
-const db = require ('../sql/sqlconn')
+const db = require('../sql/sqlconn')
 
-class uniDAO {
+class UniDAO{
+
     constructor(){
 
     }
-
-   async  create(req){
-    var query = "insert into university ('_uni_name_', '_location_', '_longitude_', '_latitude_') values (?,?,?,?);"
-    var data = Object.values(req.body)
-    try{
-        var result = await db.run(query,data)
-        return{
-            "status" : "true", 
-
-        }
-    }
-    catch(err){
-        console.error(err) // Only during developement
-        return {
-            "status" : "false"
-        }
-    }
-    }
-   async retrive(req){
-
-    }
-   async retriveByID(req){
-            //Admin functionability
-    }
-   async retriveByName(req){
+    async create(req){
+       var query = "insert into university (`_uni_name_`, `_location_`, `_longitude_`, `_latitude_`)" +
+       "values (?, ?, ?, ?)"
+       var data = Object.values(req.body)
+       console.log(data)
+       try{
+            var result = await db.run(query, data)
+            return{
+                "status": "true"
+            }
+       }
+       catch(err)
+       {
+            console.error(err)//Only during develppment
+            return{
+                "status": "false"
+            }
+       }
 
     }
-   async  retriveByType(req){
+    async retrieveByID(req){
 
     }
-   async retriveByLocation(req){
+    async retrieveByName(req){
 
     }
-   async updateByName(req){
+    async retrieveByType(req){
 
     }
-   async deleteByID(req){
+    async retrieveByLocation(req){
+
+    }
+    async updateByID(req){
+
+    }
+    async deleteByID()
+    {
 
     }
 }
-module.exports = uniDAO
+module.exports = UniDAO
